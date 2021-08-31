@@ -25,6 +25,7 @@
     <main class='container justify-content-center mw-100'>
         <section class='row'>
 
+
             <!-- Sidebar where user will search for -->
             <aside id='search-sidebar' class='col bg-blue-gradient vh-100 ms-4 me-2'>
                 <div class='container'>
@@ -49,6 +50,7 @@
                 <!-- Weather dashboard content -->
                 <section id='weather-dashboard' class='col-8 container border me-4 ms-2'>
                     
+
                     <!-- Current weather dashboard -->
                     <section id='current-weather' class='container'>
                         <section class='row'>
@@ -56,14 +58,20 @@
                             <p id='current-city-icon' class='col-4'>icon</p>
                             <p class='col-2'>date</p>
                         </section>
-
-                        <section id='current-weather-items' class='container row'>
-                            <div id='current-weather-temperature'>
-
+                        <!-- Current weather items (i.e., temperature, wind, humidity, etc.) -->
+                        <section id='current-weather-items' class='container'>
+                            <div class="row">
+                                <div id='current-weather-temperature' class='card col'>
+                                    temperature
+                                </div>
+                                <div id='current-weather-temperature' class='card col'>
+                                    temperature
+                                </div>
                             </div>
                         </section>
                     </section>
                     
+
                     <!-- 5-day forecast dashboard -->
                     <section id='5-day-forecast'>
                         Forecast
