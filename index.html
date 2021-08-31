@@ -27,7 +27,22 @@
 
             <!-- Sidebar where user will search for -->
             <aside id='search-sidebar' class='col bg-blue-gradient vh-100 ms-4 me-2'>
-                Sidebar
+                <div class='container'>
+                    <h2 class='mt-4 text-center row justify-content-center col-12'>Search for a city:</h2>
+                    <!-- User input of the city -->
+                    <input type="text" name="city" id="city-input" class='form-control mt-4 row col-12 mx-auto' placeholder="Enter a city (e.g., Columbus)">
+                    <!-- Search button -->
+                    <div class='row justify-content-center text-center'>
+                        <button id='search-button' class='btn btn-danger mt-4 col-6 mx-auto border' type="submit">
+                            Search
+                        </button>
+                    </div>
+                    <!-- Empty list that will fill with local storage of search history -->
+                    <div>
+                        <ul id='search-history-ul' class='mt-4'>
+                        </ul>
+                    </div>
+                </div>
             </aside>
 
             
