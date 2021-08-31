@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Fancy Weather App</title>
 </head>
 <body class='bg-dark text-light'>
@@ -16,7 +17,7 @@
     <!-- Header -->
     <header class='navbar-brand text-center row m-3'>
         <h1>My Weather Dashboard</h1>
-        <h3 id='header-date'>[Placeholder - will have current date]</h3>
+        <h4 id='header-date'></h4>
     </header>
 
     <p class='border-top mx-4'></p>
@@ -58,7 +59,7 @@
                         <section class='row align-items-center pb-5'>
                             <h2 id='current-city' class='col-6'>City</h2>
                             <p id='current-city-icon' class='col-4'>icon</p>
-                            <p class='col-2'>date</p>
+                            <p id='current-weather-date' class='col-2'>date</p>
                         </section>
                         <!-- Current weather items (i.e., temperature, wind, humidity, etc.) -->
                         <section id='current-weather-items' class='container mt-4'>
@@ -94,7 +95,7 @@
                         <section class='row my-4 text-light'>
                             <!-- Forecat Day 1 Card -->
                             <div id='day-1-forecast' class='card col mx-1 bg-grey-gradient'>
-                                <h5 class='mt-2'>Card 1</h5>
+                                <h5 id='fcst-1-date' class='mt-4 fw-bold'></h5>
                                 <p>Icon</p>
                                 <p><strong>Temp: </strong><span id='fcst-1-temp'>[temp]</span></p>
                                 <p><strong>Wind: </strong><span id='fcst-1-wind'>[wind]</span></p>
@@ -102,7 +103,7 @@
                             </div>
                             <!-- Forecat Day 2 Card -->
                             <div id='day-2-forecast' class='card col mx-1 bg-grey-gradient'>
-                                <h5 class='mt-2'>Card 2</h5>
+                                <h5 id='fcst-2-date' class='mt-4 fw-bold'></h5>
                                 <p>Icon</p>
                                 <p><strong>Temp: </strong><span id='fcst-2-temp'>[temp]</span></p>
                                 <p><strong>Wind: </strong><span id='fcst-2-wind'>[wind]</span></p>
@@ -110,7 +111,7 @@
                             </div>
                             <!-- Forecat Day 3 Card -->
                             <div id='day-3-forecast' class='card col mx-1 bg-grey-gradient'>
-                                <h5 class='mt-2'>Card 3</h5>
+                                <h5 id='fcst-3-date' class='mt-4 fw-bold'></h5>
                                 <p>Icon</p>
                                 <p><strong>Temp: </strong><span id='fcst-3-temp'>[temp]</span></p>
                                 <p><strong>Wind: </strong><span id='fcst-3-wind'>[wind]</span></p>
@@ -118,7 +119,7 @@
                             </div>
                             <!-- Forecat Day 4 Card -->
                             <div id='day-4-forecast' class='card col mx-1 bg-grey-gradient'>
-                                <h5 class='mt-2'>Card 4</h5>
+                                <h5 id='fcst-4-date' class='mt-4 fw-bold'></h5>
                                 <p>Icon</p>
                                 <p><strong>Temp: </strong><span id='fcst-4-temp'>[temp]</span></p>
                                 <p><strong>Wind: </strong><span id='fcst-4-wind'>[wind]</span></p>
@@ -126,7 +127,7 @@
                             </div>
                             <!-- Forecat Day 5 Card -->
                             <div id='day-5-forecast' class='card col mx-1 bg-grey-gradient'>
-                                <h5 class='mt-2'>Card 5</h5>
+                                <h5 id='fcst-5-date' class='mt-4 fw-bold'></h5>
                                 <p>Icon</p>
                                 <p><strong>Temp: </strong><span id='fcst-5-temp'>[temp]</span></p>
                                 <p><strong>Wind: </strong><span id='fcst-5-wind'>[wind]</span></p>
@@ -144,5 +145,6 @@
 
 
 </body>
+<script src='Assets/js/time.js'></script>
 <script src='Assets/js/script.js'></script>
 </html>
