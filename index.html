@@ -6,20 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="Assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <title>Fancy Weather App</title>
 </head>
-<body class='bg-dark'>
+<body class='bg-dark text-light'>
 
     <!-- Header -->
-    <header>
-
+    <header class='navbar-brand text-center row m-3'>
+        <h1>My Weather Dashboard</h1>
+        <h3 id='header-date'>[Placeholder - will have current date]</h3>
     </header>
+
+    <p class='border-top mx-4'></p>
     
-    <!-- Sidebar where user will search for -->
-    <aside>
+    <!-- Main container for content in the body -->
+    <main class='container justify-content-center mw-100'>
+        <section class='row'>
 
-    </aside>
+            <!-- Sidebar where user will search for -->
+            <aside id='search-sidebar' class='col bg-blue-gradient vh-100 ms-4 me-2'>
+                Sidebar
+            </aside>
 
+            
+                <!-- Weather dashboard content -->
+                <section id='weather-dashboard' class='col-8 container border me-4 ms-2'>
+                    
+                    <!-- Current weather dashboard -->
+                    <section id='current-weather' class='container'>
+                        <section class='row'>
+                            <h3 id='current-city' class='col-6'>City</h3>
+                            <p id='current-city-icon' class='col-4'>icon</p>
+                            <p class='col-2'>date</p>
+                        </section>
+
+                        <section id='current-weather-items' class='container row'>
+                            <div id='current-weather-temperature'>
+
+                            </div>
+                        </section>
+                    </section>
+                    
+                    <!-- 5-day forecast dashboard -->
+                    <section id='5-day-forecast'>
+                        Forecast
+                    </section>
+                </section>
+
+            
+        
+        </section>
+    </main>
 
 
 
