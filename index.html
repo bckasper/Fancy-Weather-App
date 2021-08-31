@@ -27,7 +27,7 @@
 
 
             <!-- Sidebar where user will search for -->
-            <aside id='search-sidebar' class='col bg-blue-gradient vh-100 ms-4 me-2'>
+            <aside id='search-sidebar' class='col bg-dark-gradient vh-100 ms-4 me-2'>
                 <div class='container'>
                     <h2 class='mt-4 text-center row justify-content-center col-12'>Search for a city:</h2>
                     <!-- User input of the city -->
@@ -48,24 +48,38 @@
 
             
                 <!-- Weather dashboard content -->
-                <section id='weather-dashboard' class='col-8 container border me-4 ms-2'>
+                <section id='weather-dashboard' class='col-8 container me-4 ms-2'>
                     
 
                     <!-- Current weather dashboard -->
-                    <section id='current-weather' class='container'>
-                        <section class='row'>
-                            <h3 id='current-city' class='col-6'>City</h3>
+                    <section id='current-weather' class='container mb-4 bg-primary pt-4 bg-blue-gradient'>
+                        <section class='row align-items-center pb-5'>
+                            <h2 id='current-city' class='col-6'>City</h2>
                             <p id='current-city-icon' class='col-4'>icon</p>
                             <p class='col-2'>date</p>
                         </section>
                         <!-- Current weather items (i.e., temperature, wind, humidity, etc.) -->
-                        <section id='current-weather-items' class='container'>
+                        <section id='current-weather-items' class='container mt-4'>
                             <div class="row">
-                                <div id='current-weather-temperature' class='card col'>
-                                    temperature
+                                <div class='justify-content-center text-center col'>
+                                    <h4>Temperature</h4>
+                                    <div class='border-top mx-2'></div>
+                                    <p class='pt-2 pb-4'>[temperature]</p>
                                 </div>
-                                <div id='current-weather-temperature' class='card col'>
-                                    temperature
+                                <div class='justify-content-center text-center col'>
+                                    <h4>Wind</h4>
+                                    <div class='border-top mx-2'></div>
+                                    <p id='current-weather-wind' class='pt-2 pb-4'>[wind]</p>
+                                </div>
+                                <div class='justify-content-center text-center col'>
+                                    <h4>Humidity</h4>
+                                    <div class='border-top mx-2'></div>
+                                    <p id='current-weather-humidity' class='pt-2 pb-4'>[humidity]</p>
+                                </div>
+                                <div class='justify-content-center text-center col'>
+                                    <h4>UV Index</h4>
+                                    <div class='border-top mx-2'></div>
+                                    <p id='current-weather-uv' class='pt-2 pb-4'>[UV Index]</p>
                                 </div>
                             </div>
                         </section>
