@@ -5,6 +5,8 @@ const city = document.getElementById('city-input')
 const currentCityEl = document.getElementById('current-city')
 const currentCityIconEl = document.getElementById('current-city-icon')
 const currentCityTemp = document.getElementById('current-weather-temp')
+const currentCityWind = document.getElementById('current-weather-wind')
+const currentCityHumidity = document.getElementById('current-weather-humidity')
 
 
 // Global variables
@@ -29,6 +31,7 @@ function getCurrentWeather(){
         })
         .then(function(result){
             console.log(result)
+            storeInput(result.name)
             printCurrentWeather(result)
         })
         .catch(function(){
@@ -50,19 +53,26 @@ function getForecast(){
 }
 
 // Store the user's city input into local storage
-function storeInput(){
+function storeInput(result){
     var storedSearch = JSON.parse(localStorage.getItem("searchHistory"));
     if (storedSearch == null) {storedSearch = []}
     
-    storedSearch.push(city.value);
+    storedSearch.push(result);
     localStorage.setItem("searchHistory", JSON.stringify(storedSearch))
 }
 
 
 function printCurrentWeather(result){
-    
-    currentCityEl.innerText = result.name
+    var iconURL = 'http://openweathermap.org/img/wn/'+result.weather[0].icon+'@2x.png'
+
+    currentCityEl.innerHTML = result.name
+    currentCityIconEl.setAttribute('src', iconURL)
+
     currentCityTemp.innerHTML = Math.round(result.main.temp)+'° F'
+    currentCityWind.innerHTML = Math.round(result.wind.speed)+' mph'
+    currentCityHumidity.innerHTML = result.main.humidity+'%'
+    // currentCityUV.innerHTML = result.main.humidity+'%'
+
     
 }
 
@@ -71,9 +81,8 @@ function printCurrentWeather(result){
 searchFormEl.addEventListener('submit', function(event){
     event.preventDefault()
 
-    storeInput()
     getCurrentWeather()
-    // getForecast()
+    getForecast()
 
     city.value = '';
 })
