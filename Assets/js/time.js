@@ -3,7 +3,6 @@
 
 // HTML element variables
 const headerDate = document.getElementById('header-date');
-const currentWeatherDate = document.getElementById('current-weather-date')
 const fcstDayOneDate = document.getElementById('fcst-1-date')
 const fcstDayTwoDate = document.getElementById('fcst-2-date')
 const fcstDayThreeDate = document.getElementById('fcst-3-date')
@@ -24,7 +23,6 @@ const fiveDayFcst = moment().add(5, 'days').format('M/DD/YYYY')
 
 // DOM Manipulation is shown below
 headerDate.textContent = todayLong
-currentWeatherDate.textContent = todayShort
 fcstDayOneDate.textContent = oneDayFcst
 fcstDayTwoDate.textContent = twoDayFcst
 fcstDayThreeDate.textContent = threeDayFcst

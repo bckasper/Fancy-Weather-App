@@ -33,10 +33,13 @@ function getCurrentWeather(){
             console.log(result)
             storeInput(result.name)
             printCurrentWeather(result)
+            printUVIndex(result)
         })
         .catch(function(){
             alert('City not found. Please try again!')
         })
+
+
 }
 
 // API request to get the 5-day forcast for the city the user inputs
@@ -52,16 +55,8 @@ function getForecast(){
         })
 }
 
-// Store the user's city input into local storage
-function storeInput(result){
-    var storedSearch = JSON.parse(localStorage.getItem("searchHistory"));
-    if (storedSearch == null) {storedSearch = []}
-    
-    storedSearch.push(result);
-    localStorage.setItem("searchHistory", JSON.stringify(storedSearch))
-}
 
-
+// The next three functions will print current weather, the UV Index of the current weather, and the 5-day forecast
 function printCurrentWeather(result){
     var iconURL = 'http://openweathermap.org/img/wn/'+result.weather[0].icon+'@2x.png'
 
@@ -70,12 +65,25 @@ function printCurrentWeather(result){
 
     currentCityTemp.innerHTML = Math.round(result.main.temp)+'° F'
     currentCityWind.innerHTML = Math.round(result.wind.speed)+' mph'
-    currentCityHumidity.innerHTML = result.main.humidity+'%'
-    // currentCityUV.innerHTML = result.main.humidity+'%'
-
-    
+    currentCityHumidity.innerHTML = result.main.humidity+'%'    
 }
 
+// function printUVIndex(result){
+
+// }
+
+// function printFiveDayForecast(result){
+
+// }
+
+// Store the user's city input into local storage
+function storeInput(result){
+    var storedSearch = JSON.parse(localStorage.getItem("searchHistory"));
+    if (storedSearch == null) {storedSearch = []}
+    
+    storedSearch.push(result);
+    localStorage.setItem("searchHistory", JSON.stringify(storedSearch))
+}
 
 // Event listener that handles the user's form submission. Stores the input into local storage and then fires the getCurrentWeather and getForecast functions for API requests
 searchFormEl.addEventListener('submit', function(event){
@@ -86,3 +94,12 @@ searchFormEl.addEventListener('submit', function(event){
 
     city.value = '';
 })
+
+// This function will run on the page load and will pull in the current
+// function init(){
+    
+//     var mostRecentSearch = localStorage.getItem("searchHistory"[0])
+//     printCurrentWeather(mostRecentSearch)
+// }
+
+// init()
