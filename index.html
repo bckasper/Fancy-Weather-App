@@ -16,10 +16,11 @@
 
     <!-- Header -->
     <header class='navbar-brand text-center row m-3'>
-        <h1>My Weather Dashboard</h1>
+        <h1>Fancy Weather Dashboard</h1>
         <h4 id='header-date'></h4>
     </header>
 
+    <!-- line separating the header from the main content -->
     <p class='border-top mx-4'></p>
     
     <!-- Main container for content in the body -->
@@ -35,7 +36,7 @@
                     <form id='search-form' method="GET">
                         <input type="text" name="city" id="city-input" class='form-control mt-4 row col-12 mx-auto' placeholder="Enter a city (e.g., Columbus)">
                         
-                    <!-- Search button -->
+                    <!-- Search button and clear history button-->
                         <div class='row justify-content-center text-center'>
                             <button id='search-button' class='btn btn-success mt-4 col-8 mx-auto border' type="submit">
                                 Search
@@ -45,9 +46,11 @@
                     <div class="row justify-content-center">
                         <button id="clear" class="btn btn-grey mt-2 border col-8 mx-auto">Clear Search History</button>
                     </div>
+                    <div class='border-top mt-3 mx-2'></div>
+                    
                     <!-- Empty list that will fill with local storage of search history -->
                     <div>
-                        <ul id='search-history-ul' class='mt-4 container text-center'>
+                        <ul id='search-history-ul' class='mt-3 container text-center'>
                         </ul>
                     </div>
                 </div>
@@ -58,7 +61,7 @@
                 <section id='weather-dashboard' class='col-8 container me-4 ms-2'>
                     
 
-                    <!-- Current weather dashboard -->
+                    <!-- Current weather dashboard header information -->
                     <section id='current-weather' class='container mb-4 bg-primary pt-4 bg-blue-gradient'>
                         <section class='row align-items-center'>
                             <h2 id='current-city' class='col-8'></h2>
@@ -67,7 +70,7 @@
                             </div>
                         </section>
 
-                        <!-- Current weather items (i.e., temperature, wind, humidity, etc.) -->
+                        <!-- Current weather items (i.e., temperature, wind, humidity, UV Index) -->
                         <section id='current-weather-items' class='container mt-4'>
                             <div class="row">
                                 <div class='justify-content-center text-center col'>
@@ -101,6 +104,7 @@
                     <section id='5-day-forecast' class='container mt-5'>
                         <h2>5-Day Forecast</h2>
                         <section class='row my-4 text-light'>
+                            
                             <!-- Forecat Day 1 Card -->
                             <div id='day-1-forecast' class='card col mx-1 bg-grey-gradient'>
                                 <h5 id='fcst-1-date' class='mt-4 fw-bold'></h5>
@@ -111,6 +115,7 @@
                                 <p><strong>Wind: </strong><span id='fcst-1-wind'></span></p>
                                 <p><strong>Humidity: </strong><span id=fcst-1-humidity></span></p>
                             </div>
+                            
                             <!-- Forecat Day 2 Card -->
                             <div id='day-2-forecast' class='card col mx-1 bg-grey-gradient'>
                                 <h5 id='fcst-2-date' class='mt-4 fw-bold'></h5>
@@ -121,6 +126,7 @@
                                 <p><strong>Wind: </strong><span id='fcst-2-wind'></span></p>
                                 <p><strong>Humidity: </strong><span id=fcst-2-humidity></span></p>
                             </div>
+                            
                             <!-- Forecat Day 3 Card -->
                             <div id='day-3-forecast' class='card col mx-1 bg-grey-gradient'>
                                 <h5 id='fcst-3-date' class='mt-4 fw-bold'></h5>
@@ -131,6 +137,7 @@
                                 <p><strong>Wind: </strong><span id='fcst-3-wind'></span></p>
                                 <p><strong>Humidity: </strong><span id=fcst-3-humidity></span></p>
                             </div>
+                            
                             <!-- Forecat Day 4 Card -->
                             <div id='day-4-forecast' class='card col mx-1 bg-grey-gradient'>
                                 <h5 id='fcst-4-date' class='mt-4 fw-bold'></h5>
@@ -141,6 +148,7 @@
                                 <p><strong>Wind: </strong><span id='fcst-4-wind'></span></p>
                                 <p><strong>Humidity: </strong><span id=fcst-4-humidity></span></p>
                             </div>
+                            
                             <!-- Forecat Day 5 Card -->
                             <div id='day-5-forecast' class='card col mx-1 bg-grey-gradient'>
                                 <h5 id='fcst-5-date' class='mt-4 fw-bold'></h5>
@@ -154,13 +162,8 @@
                         </section>
                     </section>
                 </section>
-
-            
-        
         </section>
     </main>
-
-
 
 </body>
 <script src='Assets/js/time.js'></script>
