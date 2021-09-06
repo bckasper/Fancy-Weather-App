@@ -58,16 +58,40 @@ function getCurrentWeather(input){
         })
         .then(function(result){
             console.log(result)
-            storeInput(result.name)
             printCurrentWeather(result)
             printUVIndex(result)
             addLastSearch(result.name)
+            storeInput(result.name)
         })
         .catch(function(){
             alert('City not found. Please try again!')
         })
 
 
+}
+
+// This function does the same as the getCurrentWeather function above, but it runs when the created button is clicked and thus omits the steps of storing the search in local storage and creating another button.
+function getCurrentWeatherBtn(input){
+    currentQueryURL = 'https://api.openweathermap.org/data/2.5/weather?q='+input+'&appid='+APIKey+'&units='+units
+
+    console.log(currentQueryURL)
+
+    fetch(currentQueryURL)
+        .then(function(response){
+            if(!response.ok){
+                throw response.json()
+            }
+           
+            return response.json()
+        })
+        .then(function(result){
+            console.log(result)
+            printCurrentWeather(result)
+            printUVIndex(result)
+        })
+        .catch(function(){
+            alert('City not found. Please try again!')
+        })
 }
 
 // API request to get the 5-day forcast for the city the user inputs
@@ -83,7 +107,6 @@ function getForecast(input){
             printFiveDayForecast(result)
         })
 }
-
 
 // The next three functions will print current weather, the UV Index of the current weather, and the 5-day forecast
 
@@ -165,14 +188,13 @@ function printFiveDayForecast(result){
 
 // Store the user's city input into local storage
 function storeInput(result){
-    var storedSearch = JSON.parse(localStorage.getItem("searchHistory"));
-    if(storedSearch == null) {storedSearch = []}
-    if(storedSearch.includes(result)){
+    if(storage == null) {storage = []}
+    if(storage.includes(result)){
         return
     }
 
-    storedSearch.push(result);
-    localStorage.setItem("searchHistory", JSON.stringify(storedSearch))
+    storage.push(result);
+    localStorage.setItem("searchHistory", JSON.stringify(storage))
 }
 
 // Below is the function that will run to add buttons of each search to a list below the search bar
@@ -189,7 +211,7 @@ function addLastSearch(city){
         button.addEventListener('click', function(event){
             event.preventDefault()
 
-            getCurrentWeather(button.getAttribute('data-city'))
+            getCurrentWeatherBtn(button.getAttribute('data-city'))
             getForecast(button.getAttribute('data-city'))
         })
 
@@ -206,11 +228,6 @@ searchFormEl.addEventListener('submit', function(event){
     city.value = '';
 })
 
-// Event listeners to remove duplicate search history and clear history
-removeDupesBtn.addEventListener('click', function(){
-    location.reload()
-})
-
 clearStorageBtn.addEventListener('click', function(){
     localStorage.clear()
     location.reload()
@@ -223,6 +240,9 @@ function init(){
     for(let i=0; i<storage.length; i++){
         addLastSearch(storage[i])
     }
+
+    getCurrentWeatherBtn(storage[0])
+    getForecast(storage[0])
 }
 
 init()
