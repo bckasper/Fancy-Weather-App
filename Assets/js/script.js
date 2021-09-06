@@ -2,6 +2,7 @@
 const cityInput = document.getElementById('city-input')
 const searchFormEl = document.getElementById('search-form')
 const city = document.getElementById('city-input')
+const searchHistoryUL = document.getElementById('search-history-ul')
 const currentCityEl = document.getElementById('current-city')
 const currentCityIconEl = document.getElementById('current-city-icon')
 const currentCityTemp = document.getElementById('current-weather-temp')
@@ -167,6 +168,15 @@ function storeInput(result){
     localStorage.setItem("searchHistory", JSON.stringify(storedSearch))
 }
 
+// Below is the function that will run to add buttons of each search to a list below the search bar
+function addLastSearch(city){
+        var listItem = document.createElement('li')
+        searchHistoryUL.append(listItem)
+        var button = document.createElement('button')
+        listItem.append(button)
+        button.innerHTML = city
+}
+
 // Event listener that handles the user's form submission. Stores the input into local storage and then fires the getCurrentWeather and getForecast functions for API requests
 searchFormEl.addEventListener('submit', function(event){
     event.preventDefault()
@@ -184,6 +194,10 @@ function init(){
     
     getCurrentWeather(mostRecentSearch[mostRecentSearch.length-1])
     getForecast(mostRecentSearch[mostRecentSearch.length-1])
+
+    for(let i=0; i<mostRecentSearch.length; i++){
+        addLastSearch(mostRecentSearch[i])
+    }
 
 }
 
