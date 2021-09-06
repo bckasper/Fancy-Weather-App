@@ -1,4 +1,4 @@
-// HTML document variables
+// HTML document variables for the search inputs and current city weather elements
 const cityInput = document.getElementById('city-input')
 const searchFormEl = document.getElementById('search-form')
 const city = document.getElementById('city-input')
@@ -8,7 +8,28 @@ const currentCityTemp = document.getElementById('current-weather-temp')
 const currentCityWind = document.getElementById('current-weather-wind')
 const currentCityHumidity = document.getElementById('current-weather-humidity')
 const currentCityUV = document.getElementById('current-weather-uv')
-const 
+
+// HTML document variables for the forecast elements
+const fcstIconOne = document.getElementById('fcst-1-icon')
+const fcstTempOne = document.getElementById('fcst-1-temp')
+const fcstWindOne = document.getElementById('fcst-1-wind')
+const fcstHumidityOne = document.getElementById('fcst-1-humidity')
+const fcstIconTwo = document.getElementById('fcst-2-icon')
+const fcstTempTwo = document.getElementById('fcst-2-temp')
+const fcstWindTwo = document.getElementById('fcst-2-wind')
+const fcstHumidityTwo = document.getElementById('fcst-2-humidity')
+const fcstIconThree = document.getElementById('fcst-3-icon')
+const fcstTempThree = document.getElementById('fcst-3-temp')
+const fcstWindThree = document.getElementById('fcst-3-wind')
+const fcstHumidityThree = document.getElementById('fcst-3-humidity')
+const fcstIconFour = document.getElementById('fcst-4-icon')
+const fcstTempFour = document.getElementById('fcst-4-temp')
+const fcstWindFour = document.getElementById('fcst-4-wind')
+const fcstHumidityFour = document.getElementById('fcst-4-humidity')
+const fcstIconFive = document.getElementById('fcst-5-icon')
+const fcstTempFive = document.getElementById('fcst-5-temp')
+const fcstWindFive = document.getElementById('fcst-5-wind')
+const fcstHumidityFive = document.getElementById('fcst-5-humidity')
 
 
 // Global variables
@@ -53,6 +74,7 @@ function getForecast(){
             return response.json() 
         })
         .then(function(result){
+            console.log(result)
             printFiveDayForecast(result)
         })
 }
@@ -96,9 +118,44 @@ function printUVIndex(result){
             }
         })
 }
+
 // Print 5-day forecast from forecast API
 function printFiveDayForecast(result){
 
+    // Fcst day 1
+    var fcst1IconUrl = 'http://openweathermap.org/img/wn/'+result.list[0].weather[0].icon+'@2x.png'
+    fcstIconOne.setAttribute('src',fcst1IconUrl)
+    fcstTempOne.innerHTML = Math.round(result.list[0].main.temp)+'° F'
+    fcstWindOne.innerHTML = Math.round(result.list[0].wind.speed)+' mph'
+    fcstHumidityOne.innerHTML = result.list[0].main.humidity+'%' 
+
+    // Fcst day 2
+    var fcst2IconUrl = 'http://openweathermap.org/img/wn/'+result.list[1].weather[0].icon+'@2x.png'
+    fcstIconTwo.setAttribute('src',fcst2IconUrl)
+    fcstTempTwo.innerHTML = Math.round(result.list[1].main.temp)+'° F'
+    fcstWindTwo.innerHTML = Math.round(result.list[1].wind.speed)+' mph'
+    fcstHumidityTwo.innerHTML = result.list[1].main.humidity+'%' 
+
+    // Fcst day 3
+    var fcst3IconUrl = 'http://openweathermap.org/img/wn/'+result.list[2].weather[0].icon+'@2x.png'
+    fcstIconThree.setAttribute('src',fcst3IconUrl)
+    fcstTempThree.innerHTML = Math.round(result.list[2].main.temp)+'° F'
+    fcstWindThree.innerHTML = Math.round(result.list[2].wind.speed)+' mph'
+    fcstHumidityThree.innerHTML = result.list[2].main.humidity+'%' 
+
+    // Fcst day 4
+    var fcst4IconUrl = 'http://openweathermap.org/img/wn/'+result.list[3].weather[0].icon+'@2x.png'
+    fcstIconFour.setAttribute('src',fcst4IconUrl)
+    fcstTempFour.innerHTML = Math.round(result.list[3].main.temp)+'° F'
+    fcstWindFour.innerHTML = Math.round(result.list[3].wind.speed)+' mph'
+    fcstHumidityFour.innerHTML = result.list[3].main.humidity+'%' 
+    
+    // Fcst day 5
+    var fcst5IconUrl = 'http://openweathermap.org/img/wn/'+result.list[4].weather[0].icon+'@2x.png'
+    fcstIconFive.setAttribute('src',fcst5IconUrl)
+    fcstTempFive.innerHTML = Math.round(result.list[4].main.temp)+'° F'
+    fcstWindFive.innerHTML = Math.round(result.list[4].wind.speed)+' mph'
+    fcstHumidityFive.innerHTML = result.list[4].main.humidity+'%' 
 }
 
 // Store the user's city input into local storage
