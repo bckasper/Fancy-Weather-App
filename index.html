@@ -34,11 +34,7 @@
                     <!-- User input of the city -->
                     <form id='search-form' method="GET">
                         <input type="text" name="city" id="city-input" class='form-control mt-4 row col-12 mx-auto' placeholder="Enter a city (e.g., Columbus)">
-                        <!-- Toggle for celsius (Fahrenheit default) -->
-                        <!-- <div class='row text-center form-check form-switch mt-4 mx-auto border'>
-                            <input type="checkbox" id='c-f-switch' class='form-check-input justify-self-center'>
-                            <label for="c-f-switch" class='form-check-label text-light'>Celsius</label>
-                        </div> -->
+                        
                     <!-- Search button -->
                         <div class='row justify-content-center text-center'>
                             <button id='search-button' class='btn btn-danger mt-4 col-6 mx-auto border' type="submit">
@@ -62,7 +58,7 @@
                     <!-- Current weather dashboard -->
                     <section id='current-weather' class='container mb-4 bg-primary pt-4 bg-blue-gradient'>
                         <section class='row align-items-center'>
-                            <h2 id='current-city' class='col-8'>City</h2>
+                            <h2 id='current-city' class='col-8'></h2>
                             <div class='col align-self-end'>
                                 <img id='current-city-icon' src=""></img>
                             </div>
@@ -89,7 +85,9 @@
                                 <div class='justify-content-center text-center col'>
                                     <h5>UV Index</h5>
                                     <div class='border-top mx-2'></div>
-                                    <p id='current-weather-uv' class='pt-2 pb-4'></p>
+                                    <div class='justify-content-center row'>
+                                        <p id='current-weather-uv' class='mt-2 w-50 rounded-pill'></p>
+                                    </div>
                                 </div>
                             </div>
                         </section>

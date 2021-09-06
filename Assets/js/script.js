@@ -7,6 +7,8 @@ const currentCityIconEl = document.getElementById('current-city-icon')
 const currentCityTemp = document.getElementById('current-weather-temp')
 const currentCityWind = document.getElementById('current-weather-wind')
 const currentCityHumidity = document.getElementById('current-weather-humidity')
+const currentCityUV = document.getElementById('current-weather-uv')
+const 
 
 
 // Global variables
@@ -51,12 +53,14 @@ function getForecast(){
             return response.json() 
         })
         .then(function(result){
-            console.log(result)
+            printFiveDayForecast(result)
         })
 }
 
 
 // The next three functions will print current weather, the UV Index of the current weather, and the 5-day forecast
+
+// Print current weather from current city API
 function printCurrentWeather(result){
     var iconURL = 'http://openweathermap.org/img/wn/'+result.weather[0].icon+'@2x.png'
 
@@ -68,13 +72,34 @@ function printCurrentWeather(result){
     currentCityHumidity.innerHTML = result.main.humidity+'%'    
 }
 
-// function printUVIndex(result){
+// Print UV Index from One-Call API
+function printUVIndex(result){
+    var lat = result.coord.lat
+    var long = result.coord.lon
+    var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+long+'&appid='+APIKey
 
-// }
+    fetch(oneCallUrl)
+        .then(function(response){
+            return response.json()
+        })
+        .then(function(result){
+            console.log(result)
+            var uvIndex = result.current.uvi
+            currentCityUV.innerHTML = uvIndex
 
-// function printFiveDayForecast(result){
+            if(uvIndex < 3){
+                currentCityUV.setAttribute('style', 'background-color:green; font-weight:bold')
+            } else if(uvIndex < 7){
+                currentCityUV.setAttribute('style', 'background-color:orange; font-weight:bold')
+            } else {
+                currentCityUV.setAttribute('style', 'background-color:red; font-weight:bold')
+            }
+        })
+}
+// Print 5-day forecast from forecast API
+function printFiveDayForecast(result){
 
-// }
+}
 
 // Store the user's city input into local storage
 function storeInput(result){
