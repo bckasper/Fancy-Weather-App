@@ -39,10 +39,10 @@ var APIKey = '35610e0fadafaec7131373302bc9e1ab'
 
 
 // API request to get the current weather for the city the user inputs
-function getCurrentWeather(){
-    currentQueryURL = 'https://api.openweathermap.org/data/2.5/weather?q='+city.value.trim()+'&appid='+APIKey+'&units='+units
+function getCurrentWeather(input){
+    currentQueryURL = 'https://api.openweathermap.org/data/2.5/weather?q='+input+'&appid='+APIKey+'&units='+units
 
-    // console.log(currentQueryURL)
+    console.log(currentQueryURL)
 
     fetch(currentQueryURL)
         .then(function(response){
@@ -66,8 +66,8 @@ function getCurrentWeather(){
 }
 
 // API request to get the 5-day forcast for the city the user inputs
-function getForecast(){
-    forecastQueryURL = 'https://api.openweathermap.org/data/2.5/forecast?q='+city.value.trim()+'&appid='+APIKey+'&units='+units+'&cnt=5'
+function getForecast(input){
+    forecastQueryURL = 'https://api.openweathermap.org/data/2.5/forecast?q='+input+'&appid='+APIKey+'&units='+units+'&cnt=5'
 
     fetch(forecastQueryURL)
         .then(function(response){
@@ -171,17 +171,20 @@ function storeInput(result){
 searchFormEl.addEventListener('submit', function(event){
     event.preventDefault()
 
-    getCurrentWeather()
-    getForecast()
+    getCurrentWeather(city.value.trim())
+    getForecast(city.value.trim())
 
     city.value = '';
 })
 
-// This function will run on the page load and will pull in the current
-// function init(){
+// This function will run on the page load and will pull in the current weather and forecast for the most recently searched element
+function init(){
     
-//     var mostRecentSearch = localStorage.getItem("searchHistory"[0])
-//     printCurrentWeather(mostRecentSearch)
-// }
+    var mostRecentSearch = JSON.parse(localStorage.getItem("searchHistory"))
+    
+    getCurrentWeather(mostRecentSearch[mostRecentSearch.length-1])
+    getForecast(mostRecentSearch[mostRecentSearch.length-1])
 
-// init()
+}
+
+init()
