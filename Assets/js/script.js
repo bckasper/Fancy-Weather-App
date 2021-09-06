@@ -9,6 +9,8 @@ const currentCityTemp = document.getElementById('current-weather-temp')
 const currentCityWind = document.getElementById('current-weather-wind')
 const currentCityHumidity = document.getElementById('current-weather-humidity')
 const currentCityUV = document.getElementById('current-weather-uv')
+const removeDupesBtn = document.getElementById('dupes')
+const clearStorageBtn = document.getElementById('clear')
 
 // HTML document variables for the forecast elements
 const fcstIconOne = document.getElementById('fcst-1-icon')
@@ -36,6 +38,7 @@ const fcstHumidityFive = document.getElementById('fcst-5-humidity')
 // Global variables
 var units = 'imperial'
 var APIKey = '35610e0fadafaec7131373302bc9e1ab'
+var storage = JSON.parse(localStorage.getItem("searchHistory"))
 
 
 
@@ -58,6 +61,7 @@ function getCurrentWeather(input){
             storeInput(result.name)
             printCurrentWeather(result)
             printUVIndex(result)
+            addLastSearch(result.name)
         })
         .catch(function(){
             alert('City not found. Please try again!')
@@ -162,19 +166,34 @@ function printFiveDayForecast(result){
 // Store the user's city input into local storage
 function storeInput(result){
     var storedSearch = JSON.parse(localStorage.getItem("searchHistory"));
-    if (storedSearch == null) {storedSearch = []}
-    
+    if(storedSearch == null) {storedSearch = []}
+    if(storedSearch.includes(result)){
+        return
+    }
+
     storedSearch.push(result);
     localStorage.setItem("searchHistory", JSON.stringify(storedSearch))
 }
 
 // Below is the function that will run to add buttons of each search to a list below the search bar
 function addLastSearch(city){
+
         var listItem = document.createElement('li')
         searchHistoryUL.append(listItem)
         var button = document.createElement('button')
         listItem.append(button)
         button.innerHTML = city
+        button.setAttribute('class','col-10')
+        button.setAttribute("data-city",city)
+
+        button.addEventListener('click', function(event){
+            event.preventDefault()
+
+            getCurrentWeather(button.getAttribute('data-city'))
+            getForecast(button.getAttribute('data-city'))
+        })
+
+    
 }
 
 // Event listener that handles the user's form submission. Stores the input into local storage and then fires the getCurrentWeather and getForecast functions for API requests
@@ -187,18 +206,23 @@ searchFormEl.addEventListener('submit', function(event){
     city.value = '';
 })
 
+// Event listeners to remove duplicate search history and clear history
+removeDupesBtn.addEventListener('click', function(){
+    location.reload()
+})
+
+clearStorageBtn.addEventListener('click', function(){
+    localStorage.clear()
+    location.reload()
+})
+
 // This function will run on the page load and will pull in the current weather and forecast for the most recently searched element
 function init(){
+    if(!storage){return}
     
-    var mostRecentSearch = JSON.parse(localStorage.getItem("searchHistory"))
-    
-    getCurrentWeather(mostRecentSearch[mostRecentSearch.length-1])
-    getForecast(mostRecentSearch[mostRecentSearch.length-1])
-
-    for(let i=0; i<mostRecentSearch.length; i++){
-        addLastSearch(mostRecentSearch[i])
+    for(let i=0; i<storage.length; i++){
+        addLastSearch(storage[i])
     }
-
 }
 
 init()
