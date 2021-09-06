@@ -2,6 +2,21 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+
+li{
+    list-style: none;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+li button{
+    background-color: rgb(15, 15, 31);
+    color: white;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    border-radius: 5px;
+}
+
 .bg-dark-gradient{
     background: linear-gradient(rgba(71, 86, 107, 0.2), rgba(32, 56, 100, 0.8));
     border-radius: 10px;
@@ -17,16 +32,7 @@
     border-radius: 10px;
 }
 
-li{
-    list-style: none;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-li button{
-    background-color: rgb(15, 15, 31);
-    color: white;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    border-radius: 5px;
+.btn-grey{
+    background-color: grey;
+    color: white;   
 }
