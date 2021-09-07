@@ -33,9 +33,9 @@ This is a simple application that allows the user to search and view weather inf
 ## Accessing the application
 Below are the links to the live application (.io URL) and the link to the Github Repo.
 
-**Live URL:** 
+**Live URL:** https://bckasper.github.io/Fancy-Weather-App/ 
 
-**Github Repo:**
+**Github Repo:** https://github.com/bckasper/Fancy-Weather-App
 
 
 
